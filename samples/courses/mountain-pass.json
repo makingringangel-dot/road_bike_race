@@ -1,0 +1,24 @@
+{
+  "id": "mountain-pass",
+  "version": 1,
+  "name": "峠越え山頂ゴール（山岳・ヘアピンあり）",
+  "type": "mountain",
+  "t_ref_s": 6000,
+  "segments": [
+    { "length_km": 25, "grade_pct": 0, "wind_ms": 0, "label": "谷の平地" },
+    { "length_km": 10, "grade_pct": 6.0, "wind_ms": 0, "label": "第1峠" },
+    { "length_km": 10, "grade_pct": -6.0, "wind_ms": 0, "label": "第1峠の下り" },
+    { "length_km": 30, "grade_pct": 0.5, "wind_ms": 1.0, "label": "谷の緩い登り" },
+    { "length_km": 4, "grade_pct": 3.0, "wind_ms": 0, "label": "麓" },
+    { "length_km": 13, "grade_pct": 7.0, "wind_ms": 0, "label": "最後の峠" },
+    { "length_km": 2, "grade_pct": 4.0, "wind_ms": 0, "label": "山頂手前" }
+  ],
+  "corners": [
+    { "at_km": 37.0, "radius_m": 6, "name": "ヘアピン1" },
+    { "at_km": 39.0, "radius_m": 6, "name": "ヘアピン2" },
+    { "at_km": 41.5, "radius_m": 12, "name": "鋭いコーナー" },
+    { "at_km": 44.0, "radius_m": 6, "name": "ヘアピン3" },
+    { "at_km": 92.0, "radius_m": 8, "name": "登りのヘアピン" },
+    { "at_km": 89.5, "radius_m": 25, "name": "登りのコーナー" }
+  ]
+}

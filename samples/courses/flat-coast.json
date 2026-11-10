@@ -1,0 +1,23 @@
+{
+  "id": "flat-coast",
+  "version": 1,
+  "name": "海岸線ステージ（平地・街中ゴール）",
+  "type": "flat",
+  "t_ref_s": 5300,
+  "segments": [
+    { "length_km": 35, "grade_pct": 0, "wind_ms": 0, "label": "海岸線" },
+    { "length_km": 20, "grade_pct": 0.4, "wind_ms": 2.0, "label": "向かい風の直線" },
+    { "length_km": 30, "grade_pct": -0.3, "wind_ms": -1.5, "label": "追い風" },
+    { "length_km": 6, "grade_pct": 2.0, "wind_ms": 0, "label": "小さな丘" },
+    { "length_km": 6, "grade_pct": -2.0, "wind_ms": 0, "label": "丘の下り" },
+    { "length_km": 15, "grade_pct": 0, "wind_ms": 1.0, "label": "平地" },
+    { "length_km": 8, "grade_pct": 0, "wind_ms": 0, "label": "街中" }
+  ],
+  "corners": [
+    { "at_km": 55.0, "radius_m": 25, "name": "海岸の交差点" },
+    { "at_km": 97.0, "radius_m": 12, "name": "丘の下りの鋭いコーナー" },
+    { "at_km": 114.5, "radius_m": 25, "name": "街の入口" },
+    { "at_km": 117.2, "radius_m": 12, "name": "駅前" },
+    { "at_km": 118.9, "radius_m": 30, "name": "最終コーナー" }
+  ]
+}
