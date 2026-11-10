@@ -1,0 +1,12 @@
+{
+  "team_id": "T04",
+  "template": "balanced",
+  "riders": {
+    "T04-6": { "role": "climber", "items": { "recovery": 3, "boost": 3 }, "pins": [
+      { "type": "attack", "at_km": 92.1, "kind": "sharp", "boost": true, "on_check": "continue" }
+    ] },
+    "T04-1": { "role": "leader", "pins": [
+      { "type": "attack", "at_km": 91.8, "kind": "sharp" }
+    ] }
+  }
+}

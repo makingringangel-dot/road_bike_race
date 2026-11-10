@@ -4,7 +4,7 @@ key,value,unit,min,max,default,description,ref
 meta.version,1,,,,,版（公開した版は変更せず、新しい版を作る）,core §9-1
 meta.parent_version,,,,,,元にした版,core §9-3
 meta.status,draft,,,,,draft / validated / published / archived,core §9-3
-meta.note,built-in defaults,,,,,メモ,
+meta.note,仕様書の初期値,,,,,メモ,
 # --- scale ---
 scale.display_per_sim,2,倍,1,10,2,縮尺。表示距離 = シム距離 × この値（D27: 1/2 → 2）,core §8
 # --- race ---

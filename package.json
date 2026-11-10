@@ -5,12 +5,12 @@
   "description": "Deterministic fixed-point road race simulator prototype (team tactics)",
   "type": "module",
   "bin": {
-    "racesim": "dist/cli.js"
+    "racesim": "dist/src/cli.js"
   },
   "scripts": {
     "build": "tsc -p .",
-    "sim": "node dist/cli.js",
-    "test": "tsc -p . && node --test dist/test/"
+    "sim": "node dist/src/cli.js",
+    "test": "tsc -p . && node --test dist/test/*.test.js"
   },
   "engines": {
     "node": ">=20"

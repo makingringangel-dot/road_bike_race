@@ -1,0 +1,14 @@
+{
+  "team_id": "T01",
+  "template": "sprint",
+  "chase_policy": "aggressive",
+  "riders": {
+    "T01-1": { "role": "leader", "items": { "recovery": 3, "boost": 3 }, "pins": [
+      { "type": "sprint", "at_m": 300, "boost": true }
+    ] },
+    "T01-2": { "role": "puller", "pins": [ { "type": "pull", "from_km": 90, "to_km": 117 } ] },
+    "T01-3": { "role": "puller", "pins": [ { "type": "pull", "from_km": 95, "to_km": 118 } ] },
+    "T01-4": { "role": "puller", "recovery_threshold_pct": 30, "pins": [ { "type": "pull", "from_km": 100, "to_km": 118 } ] },
+    "T01-6": { "role": "escort", "pins": [ { "type": "check", "from_km": 100, "to_km": 119, "target": "any" } ] }
+  }
+}

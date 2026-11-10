@@ -1,0 +1,15 @@
+{
+  "team_id": "T02",
+  "template": "breakaway",
+  "chase_policy": "none",
+  "riders": {
+    "T02-1": { "role": "breakaway", "items": { "recovery": 6, "boost": 1 }, "recovery_threshold_pct": 35, "pins": [
+      { "type": "attack", "at_km": 10, "kind": "long", "on_check": "continue" },
+      { "type": "item", "at_km": 60, "item": "recovery" }
+    ] },
+    "T02-2": { "role": "breakaway", "items": { "recovery": 5, "boost": 1 }, "pins": [
+      { "type": "bridge", "from_km": 12, "to_km": 25, "target": "T02-1" }
+    ] },
+    "T02-3": { "role": "escort", "pins": [ { "type": "check", "from_km": 80, "to_km": 119, "target": "T01" } ] }
+  }
+}
