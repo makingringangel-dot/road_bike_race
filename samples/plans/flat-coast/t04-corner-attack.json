@@ -1,0 +1,12 @@
+{
+  "team_id": "T04",
+  "template": "balanced",
+  "chase_policy": "normal",
+  "riders": {
+    "T04-1": { "role": "leader", "items": { "recovery": 3, "boost": 3 }, "pins": [
+      { "type": "attack", "at_km": 117.3, "kind": "sharp", "boost": true, "on_check": "continue" },
+      { "type": "sprint", "at_m": 500, "boost": true }
+    ] },
+    "T04-3": { "role": "escort", "pins": [ { "type": "check", "from_km": 105, "to_km": 119, "target": "any" } ] }
+  }
+}

@@ -1,0 +1,211 @@
+# パラメータセット（管理者が編集するファイル）。key と value の列だけが読み込まれます。
+# 値は小数で書けます（内部では固定小数点の整数に変換。最小単位より細かい桁はエラー）。
+key,value,unit,min,max,default,description,ref
+meta.version,1,,,,,版（公開した版は変更せず、新しい版を作る）,core §9-1
+meta.parent_version,,,,,,元にした版,core §9-3
+meta.status,draft,,,,,draft / validated / published / archived,core §9-3
+meta.note,仕様書の初期値,,,,,メモ,
+# --- scale ---
+scale.display_per_sim,2,倍,1,10,2,縮尺。表示距離 = シム距離 × この値（D27: 1/2 → 2）,core §8
+# --- race ---
+race.start_speed_ms,10,m/s,0,20,10,スタート時の集団の速度（ローリングスタート）,実装
+# --- physics ---
+physics.g,9.81,m/s²,9,10,9.81,重力加速度,core §4-1
+physics.rho,1.2,kg/m³,0.9,1.4,1.20,空気密度 ρ,core §4-1
+physics.crr,0.004,,0.001,0.01,0.004,転がり抵抗係数 Crr,core §4-1
+physics.bike_mass_kg,7.5,kg,5,12,7.5,自転車の重量,core §4-1
+physics.wheel_mass_kg,1.5,kg,0.5,3,1.5,ホイールの重量（自転車の重量の内数。加速時にもう一度足す）,core §2-8
+physics.v_max_descent_ms,20,m/s,10,30,20,下りの最高速度,core §4-1
+physics.v_min_accel_ms,3,m/s,1,6,3.0,"加速の式で使う最低速度 max(v, 3.0)",core §4-2
+physics.brake_ms2,4,m/s²,1,8,4.0,ブレーキの強さ b（全員共通）,core §1-5
+physics.a_lat_ms2,5.9,m/s²,3,9,5.9,コーナーの横加速度 a_lat（v_c = √(a_lat·R)）,core §1-5
+# --- stat ---
+stat.cp_base_w,260,W,100,400,260,CP = base + per_flat × Flat,core §4-1
+stat.cp_per_flat_w,1.6,W,0,5,1.6,Flat 1あたりのCP,core §4-1
+stat.mass_base_kg,80,kg,50,100,80,体重 = base − per_climb × Climb,core §4-1
+stat.mass_per_climb_kg,0.22,kg,0,0.5,0.22,Climb 1あたりの体重の減少,core §4-1
+stat.cda_ref,0.3,m²,0.15,0.5,0.30,体の CdA = cda_ref × (m / cda_ref_mass)^(2/3),core §4-1
+stat.cda_ref_mass_kg,70,kg,40,100,70,CdA の基準体重,core §4-1
+stat.pmax_base_w,900,W,400,2000,900,Pmax = base + per_sprint × Sprint,core §4-1
+stat.pmax_per_sprint_w,6,W,0,20,6,Sprint 1あたりの Pmax,core §4-1
+stat.wmax_base_kj,12,kJ,4,40,12,W'max = base + per_sprint × Sprint,core §4-1
+stat.wmax_per_sprint_kj,0.12,kJ,0,0.5,0.12,Sprint 1あたりの W'max,core §4-1
+stat.tau_base_s,300,s,60,600,300,バースト回復の時定数 τ = base − per_stamina × Stamina,core §4-1
+stat.tau_per_stamina_s,1.5,s,0,4,1.5,Stamina 1あたりの τ の短縮,core §4-1
+stat.sg_base,1.15,,0.5,2,1.15,燃料の消費係数 s_G = base − per_stamina × Stamina,core §4-1
+stat.sg_per_stamina,0.003,,0,0.01,0.003,Stamina 1あたりの s_G の減少,core §4-1
+stat.react_base_s,3,s,0,10,3.0,反応の遅れ = round(base − per_iq × IQ),core §4-1
+stat.react_per_iq_s,0.02,s,0,0.1,0.02,IQ 1あたりの反応の短縮,core §4-1
+# --- equip ---
+equip.frame_aero_cda,-0.01,m²,-0.05,0,-0.010,エアロフレームの CdA 変化,core §1-2
+equip.frame_light_kg,-0.8,kg,-3,0,-0.8,軽量フレームの重量変化,core §1-2
+equip.frame_allround_cda,-0.005,m²,-0.05,0,-0.005,オールラウンドフレームの CdA 変化,core §1-2
+equip.frame_allround_kg,-0.4,kg,-3,0,-0.4,オールラウンドフレームの重量変化,core §1-2
+equip.wheel_deep_cda,-0.012,m²,-0.05,0,-0.012,ディープリムの CdA 変化,core §1-2
+equip.wheel_deep_kg,0.4,kg,0,2,0.4,ディープリムの重量変化（ホイール重量）,core §1-2
+equip.wheel_low_kg,-0.5,kg,-2,0,-0.5,ロープロの重量変化（ホイール重量）,core §1-2
+equip.wear_basic_cda,-0.004,m²,-0.03,0,-0.004,ウェア（標準）の CdA 変化,core §1-2
+equip.wear_aero_cda,-0.008,m²,-0.03,0,-0.008,ウェア（エアロ）の CdA 変化,core §1-2
+equip.computer_accel_loss,0.15,,0,0.5,0.15,サイコンによる加減速ロスの軽減率,core §1-2
+equip.computer_fuel,0.03,,0,0.2,0.03,サイコンによる燃料消費の軽減率,core §1-2
+# --- job ---
+job.climber.A,0.06,,-0.1,0.1,0.06,climber: 長い登りの項 A,core §1-4
+job.climber.B,-0.01,,-0.1,0.1,-0.01,climber: 登り始め・短い登りの項 B,core §1-4
+job.climber.F,-0.02,,-0.1,0.1,-0.02,climber: 平地の項 F,core §1-4
+job.climber.S,-0.04,,-0.1,0.1,-0.04,climber: ゴール前スプリントの項 S,core §1-4
+job.rouleur.A,-0.03,,-0.1,0.1,-0.03,rouleur: 長い登りの項 A,core §1-4
+job.rouleur.B,-0.02,,-0.1,0.1,-0.02,rouleur: 登り始め・短い登りの項 B,core §1-4
+job.rouleur.F,0.04,,-0.1,0.1,0.04,rouleur: 平地の項 F,core §1-4
+job.rouleur.S,0,,-0.1,0.1,0,rouleur: ゴール前スプリントの項 S,core §1-4
+job.puncheur.A,-0.01,,-0.1,0.1,-0.01,puncheur: 長い登りの項 A,core §1-4
+job.puncheur.B,0.05,,-0.1,0.1,0.05,puncheur: 登り始め・短い登りの項 B,core §1-4
+job.puncheur.F,0,,-0.1,0.1,0,puncheur: 平地の項 F,core §1-4
+job.puncheur.S,0.02,,-0.1,0.1,0.02,puncheur: ゴール前スプリントの項 S,core §1-4
+job.sprinter.A,-0.04,,-0.1,0.1,-0.04,sprinter: 長い登りの項 A,core §1-4
+job.sprinter.B,-0.03,,-0.1,0.1,-0.03,sprinter: 登り始め・短い登りの項 B,core §1-4
+job.sprinter.F,0,,-0.1,0.1,0,sprinter: 平地の項 F,core §1-4
+job.sprinter.S,0.06,,-0.1,0.1,0.06,sprinter: ゴール前スプリントの項 S,core §1-4
+job.allrounder.A,0,,-0.1,0.1,0,allrounder: 長い登りの項 A,core §1-4
+job.allrounder.B,0,,-0.1,0.1,0,allrounder: 登り始め・短い登りの項 B,core §1-4
+job.allrounder.F,0,,-0.1,0.1,0,allrounder: 平地の項 F,core §1-4
+job.allrounder.S,0,,-0.1,0.1,0,allrounder: ゴール前スプリントの項 S,core §1-4
+job.tau_short_s,75,s,30,300,75,τS（短い登りの項が消える時定数）,core §1-4
+job.tau_long_s,400,s,60,1500,400,τL（長い登りの項が効く時定数）,core §1-4
+job.c_decay_s,60,s,10,600,60,平地・下りでの登り累積量 c の減衰時定数,core §1-4
+job.w_grade_lo,0.01,,0,0.05,0.01,登りの度合い w の smoothstep 下端（勾配）,core §1-4
+job.w_grade_hi,0.05,,0.01,0.15,0.05,登りの度合い w の smoothstep 上端（勾配）,core §1-4
+job.u_dist_lo_m,300,表示m,0,2000,300,スプリントの重み u: 残り表示距離がこれ以下で u=1,core §1-4
+job.u_dist_hi_m,1000,表示m,100,5000,1000,スプリントの重み u: 残り表示距離がこれ以上で u=0,core §1-4
+# --- draft ---
+draft.k_line1,1,,0.5,1,1.00,先頭交代の列 1番手の k,core §2-2
+draft.k_line2,0.75,,0.5,1,0.75,先頭交代の列 2番手の k,core §2-2
+draft.k_line3,0.7,,0.5,1,0.70,先頭交代の列 3番手の k,core §2-2
+draft.k_line4_6,0.68,,0.5,1,0.68,先頭交代の列 4〜6番手の k,core §2-2
+draft.k_body_row1,0.68,,0.5,1,0.68,本体 1列目の k,core §2-2
+draft.k_body_row2,0.64,,0.5,1,0.64,本体 2列目の k,core §2-2
+draft.k_body_mid,0.6,,0.5,1,0.60,本体 3列目〜前から rear_fraction 手前までの k,core §2-2
+draft.k_body_rear,0.65,,0.5,1,0.65,本体の後ろ rear_fraction の k,core §2-2
+draft.rear_fraction,0.3,,0,0.9,0.30,本体の後方とみなす割合,core §2-2
+draft.k_moving,0.75,,0.5,1,0.75,集団内で前に上がる途中の k,core §2-5
+# --- group ---
+group.gap_s,1,s,0.2,5,1.0,同じ集団とみなす時間差,core §2-1
+group.row_spacing_m,2,m,0.5,5,2,本体の1列の間隔,core §2-1
+group.lanes,6,人,6,6,6,道幅（横の人数。D16で6に固定）,core §2-1
+group.paceline_max,6,人,1,12,6,先頭交代の列の最大人数,core §2-1
+group.drop_cooldown_s,30,s,0,300,30,切れた選手が同じ集団に再合流できるまでの最短時間,実装
+# --- pace ---
+pace.tempo_factor,0.95,×CP,0.5,1.2,0.95,牽引（テンポ）の出力,core §2-3
+pace.chase_factor,1.05,×CP,0.5,1.3,1.05,追走の出力,core §2-3
+pace.wait_factor,0.85,×CP,0.3,1.0,0.85,様子見の先頭の出力,core §2-3
+pace.soft_factor,0.6,×CP,0.3,1.0,0.60,流し（全員チェック・ブロック役）の出力,core §2-3 D13
+pace.solo_factor,1,×CP,0.5,1.2,1.00,単独の逃げ（アタック後）の出力,stamina §3-1
+pace.rotate_s,15,s,1,120,15,先頭交代の秒数,core §2-1
+pace.wait_rotate_s,30,s,1,300,30,様子見の交代の秒数,core §2-1
+pace.exit_factor,1.2,×CP,0.5,2,1.2,コーナー立ち上がりでペースを作る選手の出力,core §2-8
+pace.close_f,0.4,,0,1,0.4,差を詰める出力 CP + f·(Pmax − CP),core §2-8
+pace.bridge_f,0.4,,0,1,0.4,ブリッジの出力 CP + f·(Pmax − CP),core §4-2
+# --- block ---
+block.per_rider,0.02,,0,0.1,0.02,ブロック役1人あたりの追走効率の低下,core §2-3
+block.max,0.08,,0,0.5,0.08,ブロックによる低下の上限,core §2-3
+block.slots,12,枠,0,36,12,ブロックが効く本体前方の枠数,core §2-3
+# --- pos ---
+pos.ace_escort_bonus,15,,0,100,15,エース（同じ集団に護衛役の味方）への優先度の加点,core §2-5
+pos.escort_bonus,10,,0,100,10,護衛の指示を受けている選手への加点,core §2-5
+pos.corner_bonus,10,,0,100,10,次のコーナーが近いときの加点（× IQ/100）,core §2-5
+pos.corner_bonus_km,2,表示km,0,10,2,コーナーの加点が付く距離,core §2-5
+pos.low_burst_penalty,20,,0,100,20,バーストが少ないときの減点,core §2-5
+pos.low_burst_ratio,0.2,,0,1,0.20,減点されるバーストの割合,core §2-5
+pos.move_period_s,2,s,1,10,2,前に上がる速さ（1列あたりの秒数。D26）,core §2-5
+pos.move_cost_j,40,J,0,500,40,1列上がるごとのバーストの消費,core §2-5
+pos.move_cost_iq,0.004,,0,0.01,0.004,IQ 1あたりの消費の軽減（× (1 − x·IQ)）,core §2-5
+# --- corner ---
+corner.iq_line_base,0.97,,0.8,1.2,0.97,コーナー上限の IQ 補正 = base + per_iq × IQ,core §2-8 D28
+corner.iq_line_per_iq,0.0006,,0,0.003,0.0006,IQ 1あたりのラインの上手さ,core §2-8 D28
+corner.accordion_max,0.15,,0,0.5,0.15,後方の進入速度の最大低下率,core §2-8
+corner.accordion_rows,40,列,1,200,40,最大低下に達する列,core §2-8
+corner.accordion_iq,0.004,,0,0.01,0.004,IQ による低下の軽減（× (1 − x·IQ)）,core §2-8
+corner.zone_max_vc_kmh,68,km/h,20,120,68,ゾーンを作るコーナー（v_c がこれ未満。アイコンの付くコーナー）,core §2-11
+corner.no_attack_zone_m,200,表示m,0,1000,200,アタック禁止ゾーンの長さ（頂点の手前。D44）,core §2-11
+corner.exit_zone_m,200,表示m,0,1000,200,立ち上がりゾーンの長さ（頂点の後。D43）,core §2-11
+corner.lane_window_s,8,s,0,20,8,立ち上がりアタックの空きレーン判定の時間,core §2-9
+# --- accordion ---
+accordion.dv_ms,0.8,m/s,0.1,5,0.8,加減速のロスが発生する速度変化,core §2-8 (4)
+accordion.window_s,5,s,1,30,5,速度変化を見る時間,core §2-8 (4)
+accordion.cost_j,300,J,0,2000,300,最後尾での加減速のロス,core §2-8 (4)
+# --- stamina ---
+stamina.fatigue_base,0.3,,0,0.5,0.30,疲労係数 = base − per_stamina × Stamina（D35）,stamina §1-1
+stamina.fatigue_per_stamina,0.002,,0,0.005,0.002,Stamina 1あたりの疲労係数の減少,stamina §1-1
+stamina.fatigue_full_multiple,4,×W'max,1,10,4,容量が最大まで下がる累積消費,stamina §1-1
+stamina.fuel_coefficient,0.5,,0.3,1.2,0.5,燃料係数（D34）。K_G = 100% / (係数 × T_ref),stamina §1-2
+stamina.fuel_warn_pct,40,%,0,100,40,燃料の注意表示（黄）のしきい値,stamina §1-3
+stamina.fuel_low_pct,25,%,0,100,25,実効CPが下がり始める燃料,stamina §1-3
+stamina.fuel_low_cp_min,0.9,×CP,0.5,1,0.90,燃料0%直前の実効CP,stamina §1-3
+stamina.bonk_cp_factor,0.75,×CP,0.5,1,0.75,ハンガーノック中の実効CP,stamina §1-3
+stamina.bonk_burst_recovery,0.5,×,0.2,1,0.5,ハンガーノック中のバースト回復,stamina §1-3
+stamina.bonk_recover_pct,20,%,0,50,20,ハンガーノックから立ち直る燃料（D38）,stamina §1-3
+stamina.t_ref_speed_ms,11.1,m/s,5,20,11.1,コースに T_ref がないときの想定速度（平地の基準）,core §2-7
+# --- item ---
+item.recovery_amount_pct,25,%,5,50,25,回復系: 燃料の回復量,stamina §2-1 D39
+item.recovery_duration_s,120,s,10,600,120,回復系: 回復にかかる時間,stamina §2-1 D39
+item.recovery_burst_bonus,1.2,×,1.0,1.5,1.2,回復系: 効果中のバースト回復倍率,stamina §2-1 D39
+item.recovery_auto_threshold_pct,40,%,10,80,40,回復系: 自動使用のしきい値（既定。作戦で上書き可）,stamina §2-2
+item.boost_power_factor,1.05,×,1.00,1.08,1.05,加速系: 出力倍率,stamina §2-1 D39
+item.boost_duration_s,12,s,3,30,12,加速系: 効果時間,stamina §2-1 D39
+item.carry_total_max,10,個,0,20,10,1人の持ち込み上限（2種類の合計。D40）,stamina §2-3
+item.carry_boost_max,3,個,0,10,3,加速系の持ち込み上限,stamina §2-3
+# --- attack ---
+attack.sharp_f,0.6,,0,1,0.6,鋭い: 出力 CP + f·(Pmax − CP),stamina §3-1 D36
+attack.sharp_s,12,s,3,120,12,鋭い: 長さ,stamina §3-1 D36
+attack.standard_f,0.4,,0,1,0.4,標準: 出力係数,stamina §3-1 D36
+attack.standard_s,20,s,3,120,20,標準: 長さ,stamina §3-1 D36
+attack.long_f,0.2,,0,1,0.2,ロング: 出力係数,stamina §3-1 D36
+attack.long_s,40,s,3,120,40,ロング: 長さ,stamina §3-1 D36
+attack.start_burst_ratio,0.8,,0,1,0.8,アタック開始に必要なバースト（その種類の消費量に対する割合）,stamina §3-2
+attack.wait_max_km,2,表示km,0,10,2,バースト回復待ちの最大距離,stamina §3-2
+attack.sit_up_after_check_s,10,s,0,60,10,付かれたら止めるまでの秒数（D41）,stamina §3-3
+# --- check ---
+check.chase_power_factor,1.1,×,1.0,1.3,1.1,チェック役が追いつくまでの出力（アタックの出力に対して）,stamina §3-6
+check.wheel_k,0.75,,0.6,1.0,0.75,チェック役が後ろに付いたときの k,stamina §3-6
+# --- sprint ---
+sprint.launch_min_m,300,表示m,100,1500,300,スプリント発動地点の下限,D31
+sprint.launch_max_m,700,表示m,100,1500,700,スプリント発動地点の上限,D31
+sprint.launch_step_m,100,表示m,10,500,100,発動地点の刻み,D31
+sprint.launch_default_m,400,表示m,100,1500,400,発動地点の既定値,D31
+sprint.ai_launch_m,400,表示m,100,1500,400,AI・ピンなしの選手の発動地点,core §9-2
+sprint.power_decay_per_s,0.02,,0,0.05,0.02,スプリント出力の1秒あたりの低下,D31
+sprint.draft_s,2,s,0,10,2,発動から前の選手の後ろにいる秒数（k = draft.k_line2）,core §8-1
+# --- ai ---
+ai.alpha_aggressive,1,s/表示km,0,10,1.0,追走開始のしきい値 α（積極）,core §2-7
+ai.alpha_normal,1.5,s/表示km,0,10,1.5,追走開始のしきい値 α（普通）,core §2-7
+ai.mix_aggressive,0.2,,0,1,0.2,AIチームの方針の割合: 積極,core §2-7
+ai.mix_normal,0.5,,0,1,0.5,AIチームの方針の割合: 普通,core §2-7
+ai.mix_none,0.3,,0,1,0.3,AIチームの方針の割合: しない,core §2-7
+ai.pull_budget_km,30,表示km,0,300,30,1チームあたりの牽引の予算,core §2-7
+ai.chase_riders_per_team,3,人,1,6,3,追走するチームが先頭交代に出す人数（実装上の補足）,実装
+ai.max_chase_teams,2,チーム,1,50,2,同時に追走できるチーム数（ただ乗りの表現。実装上の補足）,実装
+ai.template_mix.flat.breakaway,0.14,,0,1,0.14,平地: AIの作戦テンプレート「逃げ狙い」の割合,stamina §4
+ai.template_mix.flat.sprint,0.56,,0,1,0.56,平地: 「スプリント勝負」の割合,stamina §4
+ai.template_mix.flat.balanced,0.3,,0,1,0.30,平地: 「バランス」の割合,stamina §4
+ai.template_mix.mountain.breakaway,0.14,,0,1,0.14,山岳: 「逃げ狙い」の割合,stamina §4
+ai.template_mix.mountain.climb,0.56,,0,1,0.56,山岳: 「山岳勝負」の割合,stamina §4
+ai.template_mix.mountain.balanced,0.3,,0,1,0.30,山岳: 「バランス」の割合,stamina §4
+ai.break_attack_km,6,表示km,0,100,6,逃げ狙いテンプレートのアタック地点,stamina §4
+ai.check_last_km,30,表示km,0,300,30,テンプレートのチェック区間（ゴールまでの残り）,stamina §4
+ai.pull_last_km,25,表示km,0,300,25,スプリント勝負の牽引区間の開始（ゴールまでの残り）,stamina §4
+ai.climb_attack_frac,0.5,,0,1,0.5,山岳勝負: 最後の登りのどこでアタックするか（割合）,stamina §4
+ai.rider_stat_base,50,,0,100,50,AIが埋める選手の能力値の中心,実装
+ai.rider_stat_spread,12,,0,50,12,AIが埋める選手の能力値のばらつき幅,実装
+ai.loadout.leader.recovery,2,個,0,20,2,役割 leader の回復系の持ち込み,stamina §2-4
+ai.loadout.leader.boost,2,個,0,10,2,役割 leader の加速系の持ち込み,stamina §2-4
+ai.loadout.breakaway.recovery,5,個,0,20,5,役割 breakaway の回復系の持ち込み,stamina §2-4
+ai.loadout.breakaway.boost,1,個,0,10,1,役割 breakaway の加速系の持ち込み,stamina §2-4
+ai.loadout.puller.recovery,4,個,0,20,4,役割 puller の回復系の持ち込み,stamina §2-4
+ai.loadout.puller.boost,0,個,0,10,0,役割 puller の加速系の持ち込み,stamina §2-4
+ai.loadout.climber.recovery,3,個,0,20,3,役割 climber の回復系の持ち込み,stamina §2-4
+ai.loadout.climber.boost,3,個,0,10,3,役割 climber の加速系の持ち込み,stamina §2-4
+ai.loadout.escort.recovery,3,個,0,20,3,役割 escort の回復系の持ち込み,stamina §2-4
+ai.loadout.escort.boost,0,個,0,10,0,役割 escort の加速系の持ち込み,stamina §2-4
+# --- ui ---
+ui.pins_per_rider_max,5,本,1,20,5,1人あたりのピンの上限,stamina §4-1
+# --- report ---
+report.breakaway_min_frac,0.25,,0,1,0.25,逃げ切りの判定: 勝者の逃げがレースの最後のこの割合より前に始まっていること,core §9-5

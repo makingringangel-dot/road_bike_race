@@ -1,0 +1,13 @@
+{
+  "team_id": "T03",
+  "template": "climb",
+  "chase_policy": "aggressive",
+  "riders": {
+    "T03-1": { "role": "climber", "items": { "recovery": 4, "boost": 3 }, "pins": [
+      { "type": "attack", "at_km": 86, "kind": "standard", "boost": true, "on_check": "continue" }
+    ] },
+    "T03-2": { "role": "puller", "pins": [ { "type": "pull", "from_km": 79, "to_km": 86 } ] },
+    "T03-3": { "role": "puller", "pins": [ { "type": "pull", "from_km": 70, "to_km": 84 } ] },
+    "T03-4": { "role": "escort", "pins": [ { "type": "check", "from_km": 60, "to_km": 93, "target": "any" } ] }
+  }
+}
