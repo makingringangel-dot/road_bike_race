@@ -931,7 +931,9 @@ export function runRace(opt: RaceOptions): RaceResult {
       const ahead = !!front && front !== g && front.s > g.s;
       const mateAhead = ts.riders.some((r) => active(r) && r.g && r.g !== g && r.g.s > g.s);
       if (ts.chasing) {
-        if (!ahead || mateAhead || ts.exhausted || ts.chaseGroup !== g.id) { ts.chasing = false; continue; }
+        if (!ahead || mateAhead || ts.exhausted) { ts.chasing = false; continue; }
+        // group ids change when groups merge; the chase follows the team's group
+        ts.chaseGroup = g.id;
         ts.budgetUsed += g.v;
         if (ts.budgetUsed >= budget) { ts.exhausted = true; ts.chasing = false; ev(t, null, `${ts.input.id}: 牽引の予算を使い切った`); }
         continue;
