@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ロードレース リプレイ</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="./src/style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="title">ロードレース リプレイ <span id="courseName"></span></div>
+      <div class="hdr-right">
+        <label>リプレイ <select id="replaySel"></select></label>
+        <label class="btn">ファイルを開く<input id="fileIn" type="file" accept=".json,.gz" hidden /></label>
+      </div>
+    </header>
+    <main>
+      <section id="stage">
+        <canvas id="map"></canvas>
+        <canvas id="mini" width="230" height="230"></canvas>
+        <div id="camBar">
+          <button data-cam="lead" class="on">先頭を追う</button>
+          <button data-cam="group">集団を追う</button>
+          <button data-cam="rider">選手を追う</button>
+          <button data-cam="free">自由</button>
+          <span class="sep"></span>
+          <button id="zoomOut" title="縮小">－</button>
+          <button id="zoomIn" title="拡大">＋</button>
+          <label class="chk"><input id="headUp" type="checkbox" checked />進行方向を上に</label>
+        </div>
+        <div id="legend">
+          <span><i style="background: rgba(235, 60, 60, 0.7)"></i>アタック禁止ゾーン</span>
+          <span><i style="background: rgba(60, 210, 130, 0.7)"></i>立ち上がりゾーン</span>
+        </div>
+        <div id="loading">読み込み中…</div>
+      </section>
+      <aside>
+        <div class="panel">
+          <h3>集団とタイム差</h3>
+          <div id="groups"></div>
+        </div>
+        <div class="panel">
+          <h3>選手 <small>（地図の選手をクリック、ダブルクリックで追う）</small></h3>
+          <div id="rider" class="muted">選手を選んでください</div>
+        </div>
+        <div class="panel grow">
+          <h3>イベント
+            <label class="chk small"><input id="showItems" type="checkbox" />補給も表示</label>
+          </h3>
+          <div id="events"></div>
+        </div>
+      </aside>
+    </main>
+    <footer>
+      <canvas id="profile"></canvas>
+      <div id="controls">
+        <button id="play" class="big">▶</button>
+        <canvas id="timeline"></canvas>
+        <div id="clock">0:00:00</div>
+        <label>速度 <select id="speed"></select></label>
+      </div>
+    </footer>
+    <script type="module" src="./src/main.ts"></script>
+  </body>
+</html>
