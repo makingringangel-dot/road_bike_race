@@ -1,0 +1,16 @@
+{
+  "name": "road-race-replay-viewer",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Replay viewer for the road race simulator (keyframe replays)",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.0",
+    "vite": "^6.3.0"
+  }
+}

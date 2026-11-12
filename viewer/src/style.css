@@ -1,0 +1,58 @@
+:root {
+  --bg: #0e131a;
+  --panel: #161d27;
+  --line: #263142;
+  --text: #e6edf5;
+  --muted: #8a96a8;
+  --accent: #3d6fd9;
+  font-family: "Noto Sans JP", "Hiragino Sans", "WenQuanYi Micro Hei", "Yu Gothic", sans-serif;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; background: var(--bg); color: var(--text); overflow: hidden; }
+body { display: grid; grid-template-rows: 44px 1fr auto; }
+header { min-width: 0; overflow: hidden; display: flex; align-items: center; justify-content: space-between; padding: 0 14px; border-bottom: 1px solid var(--line); background: #111822; }
+.title { flex: 1 1 auto; font-weight: 700; font-size: 16px; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-right: 12px; }
+#courseName { font-weight: 400; color: var(--muted); margin-left: 10px; font-size: 14px; }
+.hdr-right { flex-shrink: 0; white-space: nowrap; display: flex; gap: 12px; align-items: center; font-size: 13px; }
+select, button, .btn { background: #1d2633; color: var(--text); border: 1px solid var(--line); border-radius: 6px; padding: 4px 10px; font: inherit; font-size: 13px; cursor: pointer; }
+button:hover, .btn:hover { border-color: #3b4d66; }
+button.on { background: var(--accent); border-color: var(--accent); }
+main { display: grid; grid-template-columns: 1fr 340px; min-height: 0; }
+#stage { position: relative; min-height: 0; overflow: hidden; }
+#map { width: 100%; height: 100%; display: block; cursor: grab; }
+#mini { position: absolute; top: 10px; right: 10px; width: 230px; height: 230px; pointer-events: none; }
+#camBar { position: absolute; left: 10px; top: 10px; display: flex; gap: 6px; align-items: center; background: rgba(10, 16, 24, 0.75); padding: 6px; border-radius: 8px; }
+#camBar .sep { width: 8px; }
+#legend { position: absolute; left: 10px; bottom: 10px; display: flex; gap: 12px; font-size: 12px; background: rgba(10, 16, 24, 0.7); padding: 5px 9px; border-radius: 6px; }
+#legend i { display: inline-block; width: 14px; height: 8px; margin-right: 5px; border-radius: 2px; vertical-align: middle; }
+#loading { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 18px; background: rgba(0, 0, 0, 0.5); }
+.chk { font-size: 12px; display: flex; gap: 4px; align-items: center; margin-left: 6px; }
+.chk.small { display: inline-flex; font-weight: 400; float: right; }
+aside { border-left: 1px solid var(--line); display: flex; flex-direction: column; min-height: 0; background: var(--panel); }
+.panel { padding: 10px 12px; border-bottom: 1px solid var(--line); }
+.panel.grow { flex: 1; min-height: 0; display: flex; flex-direction: column; }
+.panel h3 { margin: 0 0 8px; font-size: 13px; color: #c7d3e3; }
+.panel h3 small { color: var(--muted); font-weight: 400; font-size: 11px; }
+.muted { color: var(--muted); font-size: 13px; }
+#groups { display: flex; flex-direction: column; gap: 4px; max-height: 210px; overflow: auto; }
+.grp { display: grid; grid-template-columns: 1fr auto auto; gap: 8px; align-items: center; padding: 4px 8px; border-radius: 6px; background: #1b2430; cursor: pointer; font-size: 13px; }
+.grp.sel { outline: 2px solid var(--accent); }
+.grp .name { font-weight: 700; }
+.grp .gap { font-variant-numeric: tabular-nums; }
+.grp .spd { color: var(--muted); font-size: 11px; }
+.tag { display: inline-block; padding: 0 6px; border-radius: 4px; font-size: 11px; margin-right: 6px; color: #fff; }
+#rider { font-size: 13px; }
+#rider .row { display: flex; justify-content: space-between; margin: 3px 0; }
+.bar { height: 8px; border-radius: 4px; background: #263142; overflow: hidden; margin: 2px 0 6px; }
+.bar > div { height: 100%; }
+.swatch { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 6px; vertical-align: middle; }
+#events { overflow: auto; font-size: 12px; flex: 1; }
+.ev { padding: 3px 4px; border-bottom: 1px solid #1f2936; cursor: pointer; display: grid; grid-template-columns: 56px 1fr; gap: 6px; }
+.ev:hover { background: #1d2733; }
+.ev .t { color: var(--muted); font-variant-numeric: tabular-nums; }
+footer { border-top: 1px solid var(--line); background: #111822; }
+#profile { width: 100%; height: 110px; display: block; }
+#controls { display: grid; grid-template-columns: auto 1fr auto auto; gap: 12px; align-items: center; padding: 6px 14px 10px; font-size: 13px; }
+#timeline { width: 100%; height: 30px; cursor: pointer; }
+#clock { font-variant-numeric: tabular-nums; min-width: 190px; text-align: right; }
+button.big { width: 44px; height: 34px; font-size: 16px; }
